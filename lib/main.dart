@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import "package:vector_math/vector_math.dart" as Math;
+import "package:bezier/bezier.dart";
 import 'article_layout.dart';
 import './article_content.dart';
 import 'sprite/linear_sprite.dart';
+import 'sprite/curve_sprite.dart';
 
 void main() {
   runApp(const MyApp());
@@ -88,7 +91,23 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             top: titleHeight,
-            right: 0)
+            right: 0),
+        Positioned(
+            child: CurveSprite(
+              progress: _scrollRatio,
+              curve: QuadraticBezier([
+                Math.Vector2(-40.0, -40.0),
+                Math.Vector2(30.0, 10.0),
+                Math.Vector2(55.0, 25.0)
+              ]),
+              spriteWidget: const Image(
+                image: AssetImage('assets/sprit.png'),
+                height: 72,
+                width: 72,
+              ),
+            ),
+            top: titleHeight,
+            right: 0),
       ]),
     );
   }
