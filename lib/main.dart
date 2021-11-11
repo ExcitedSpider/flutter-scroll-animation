@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'article_layout.dart';
 import './article_content.dart';
-import 'linear-sprit.dart';
+import 'linear_sprit.dart';
 
 void main() {
   runApp(const MyApp());
