@@ -6,15 +6,14 @@ class CurveSprite extends BaseSprite {
   /// 贝塞尔曲线
   /// https://pub.dev/packages/bezier
   final Bezier curve;
-  /// 动画进度
-  final double progress;
 
   const CurveSprite(
       {Key? key,
+      required double progress,
+      required Widget spriteWidget,
       required this.curve,
-      required this.progress,
-      required Widget spriteWidget})
-      : super(key: key, spriteWidget: spriteWidget);
+      })
+      : super(key: key, spriteWidget: spriteWidget, progress: progress);
 
   @override
   _CruveSpriteState createState() => _CruveSpriteState();

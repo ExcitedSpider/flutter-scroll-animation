@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-class BaseSprite extends StatefulWidget {
+/// 基础 Sprite
+abstract class BaseSprite extends StatefulWidget {
   final Widget spriteWidget;
+  /// 动画进度
+  final double progress;
 
-  const BaseSprite({ Key? key, required this.spriteWidget }) : super(key: key);
-
-  @override
-  BaseSpriteState createState() => BaseSpriteState();
+  const BaseSprite({ Key? key, required this.spriteWidget, required this.progress }) : super(key: key);
 }
 
-class BaseSpriteState<T extends BaseSprite> extends State<T> {
+/// 基础 Sprite State
+/// 在每次组件动画时，获取当前的插值
+abstract class BaseSpriteState<T extends BaseSprite> extends State<T> {
   late Offset translateOffset;
 
   /// 获取当前插值
@@ -18,8 +20,8 @@ class BaseSpriteState<T extends BaseSprite> extends State<T> {
   }
 
   @override
-  void didUpdateWidget(T oldSpirit) {
-    super.didUpdateWidget(oldSpirit);
+  void didUpdateWidget(T oldWidget) {
+    super.didUpdateWidget(oldWidget);
 
     setState(() {
       translateOffset = interpolation;

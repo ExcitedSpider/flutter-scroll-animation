@@ -3,8 +3,6 @@ import './base_sprite.dart';
 
 /// 实现线性运动
 class LinearSprite extends BaseSprite {
-  /// 动画进度
-  final double progress;
   /// 动画开始点
   final Offset from;
   /// 动画结束点
@@ -12,12 +10,12 @@ class LinearSprite extends BaseSprite {
 
   const LinearSprite(
       {Key? key,
-      required this.progress,
+      required double progress,
+      required Widget spriteWidget,
       required this.from,
       required this.to,
-      required Widget spriteWidget,
       })
-      : super(key: key, spriteWidget: spriteWidget);
+      : super(key: key, spriteWidget: spriteWidget, progress: progress);
 
   @override
   _LinearSpriteState createState() => _LinearSpriteState();
