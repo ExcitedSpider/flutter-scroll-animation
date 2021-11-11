@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'article_layout.dart';
 import './article_content.dart';
+import 'sprit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,16 +48,21 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0,
         toolbarHeight: 0,
       ),
-      body: ArticleLayout(
-        title: widget.title,
-        author: widget.author,
-        mark: widget.mark,
-        child: const ArticelContent(),
-        onScroll: (double ratio, { ScrollNotification? notification }) {
-          _scrollRatio = ratio;
-          return;
-        },
-      ),
+      body: Stack(children: [
+        ArticleLayout(
+          title: widget.title,
+          author: widget.author,
+          mark: widget.mark,
+          child: const ArticelContent(),
+          onScroll: (double ratio, { ScrollNotification? notification }) {
+            setState(() {
+              _scrollRatio = ratio;
+            });
+            return;
+          },
+        ),
+        Positioned(child: Spirit(progress: _scrollRatio), top: 140, left: -50)
+      ]),
     );
   }
 }
