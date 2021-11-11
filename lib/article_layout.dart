@@ -2,19 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import './color.dart';
 
+typedef ScrollListener = void Function(double ratio,
+    {ScrollNotification? notification});
+
 class ArticleLayout extends StatelessWidget {
   final Widget child;
   final String title;
   final String? author;
   final String? mark;
+  final ScrollListener? onScroll;
 
   const ArticleLayout(
       {Key? key,
       required this.child,
       required this.title,
       this.author,
-      this.mark})
+      this.mark,
+      this.onScroll})
       : super(key: key);
+
+  handleScroll(ScrollNotification event) {
+    if (onScroll != null) {
+      onScroll!(event.metrics.pixels / event.metrics.maxScrollExtent,
+          notification: event);
+    }
+  }
 
   // This widget is the root of your application.
   @override
@@ -27,23 +39,31 @@ class ArticleLayout extends StatelessWidget {
         children: [
           const MpHeading(),
           Expanded(
-              child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+              child: NotificationListener(
+            onNotification: (notification) {
+              if (notification.runtimeType == ScrollUpdateNotification) {
+                handleScroll(notification as ScrollUpdateNotification);
+              }
+              return false;
+            },
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    child: Text(
+                      title,
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    margin: const EdgeInsets.only(bottom: 16),
                   ),
-                  margin: const EdgeInsets.only(bottom: 16),
-                ),
-                MarkRow(author: author, mark: mark),
-                child,
-              ],
+                  MarkRow(author: author, mark: mark),
+                  child,
+                ],
+              ),
             ),
           )),
         ],
@@ -66,7 +86,7 @@ class MpHeading extends StatelessWidget {
         ],
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       ),
-      margin: const EdgeInsets.only(bottom: 32),
+      margin: const EdgeInsets.only(bottom: 16),
     );
   }
 }
