@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 
+/// 实现线性运动
 class LinearSpirit extends StatefulWidget {
-  double progress;
-  Size? containerSize;
-  Offset from;
-  Offset to;
+  /// 动画进度
+  final double progress;
+  /// 动画开始点
+  final Offset from;
+  /// 动画结束点
+  final Offset to;
 
-  LinearSpirit({Key? key, required this.progress, this.containerSize,required this.from,required this.to })
+  const LinearSpirit(
+      {Key? key,
+      required this.progress,
+      required this.from,
+      required this.to})
       : super(key: key);
 
   @override
