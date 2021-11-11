@@ -72,11 +72,11 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
         Positioned(
-            child: Spirit(
+            child: LinearSpirit(
               progress: _scrollRatio,
               containerSize: articleSize,
               from: const Offset(0, 0),
-              to: Offset(0, articleSize!.height - titleHeight - 36),
+              to: Offset(0, articleSize != null ? articleSize!.height - titleHeight - 36 : 0),
             ),
             top: titleHeight,
             right: 0)

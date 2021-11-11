@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class Spirit extends StatefulWidget {
+class LinearSpirit extends StatefulWidget {
   double progress;
   Size? containerSize;
   Offset from;
   Offset to;
 
-  Spirit({Key? key, required this.progress, this.containerSize,required this.from,required this.to })
+  LinearSpirit({Key? key, required this.progress, this.containerSize,required this.from,required this.to })
       : super(key: key);
 
   @override
-  _SpiritState createState() => _SpiritState();
+  _LinearSpiritState createState() => _LinearSpiritState();
 }
 
-class _SpiritState extends State<Spirit> {
+class _LinearSpiritState extends State<LinearSpirit> {
   late AnimationController _controller;
   late Offset _translateOffset;
 
@@ -24,7 +24,7 @@ class _SpiritState extends State<Spirit> {
   }
 
   @override
-  void didUpdateWidget(Spirit oldSpirit) {
+  void didUpdateWidget(LinearSpirit oldSpirit) {
     super.didUpdateWidget(oldSpirit);
 
     setState(() {
