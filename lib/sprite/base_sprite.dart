@@ -1,49 +1,42 @@
 import 'package:flutter/material.dart';
 
 class BaseSprite extends StatefulWidget {
-  /// 动画进度
-  final double progress;
+  final Widget spriteWidget;
 
-  const BaseSprite({
-    Key? key,
-    required this.progress,
-  }) : super(key: key);
+  const BaseSprite({ Key? key, required this.spriteWidget }) : super(key: key);
 
   @override
   BaseSpriteState createState() => BaseSpriteState();
 }
 
-class BaseSpriteState extends State<BaseSprite> {
-  late Offset _translateOffset;
+class BaseSpriteState<T extends BaseSprite> extends State<T> {
+  late Offset translateOffset;
 
+  /// 获取当前插值
   get interpolation {
-    return const Offset(0, 0);
+    throw Exception('Subclas need to override get interpolation');
   }
 
   @override
-  void didUpdateWidget(BaseSprite oldSpirit) {
+  void didUpdateWidget(T oldSpirit) {
     super.didUpdateWidget(oldSpirit);
 
     setState(() {
-      _translateOffset = interpolation;
+      translateOffset = interpolation;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    _translateOffset = const Offset(0, 0);
+    translateOffset = const Offset(0, 0);
   }
 
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
-      child: const Image(
-        image: AssetImage('assets/sprit.png'),
-        height: 72,
-        width: 72,
-      ),
-      offset: _translateOffset,
+      child: widget.spriteWidget,
+      offset: translateOffset,
     );
   }
 }

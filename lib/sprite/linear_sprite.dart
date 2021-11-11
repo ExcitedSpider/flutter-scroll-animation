@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import './base_sprite.dart';
 
 /// 实现线性运动
-class LinearSprite extends StatefulWidget {
+class LinearSprite extends BaseSprite {
   /// 动画进度
   final double progress;
   /// 动画开始点
@@ -13,46 +14,20 @@ class LinearSprite extends StatefulWidget {
       {Key? key,
       required this.progress,
       required this.from,
-      required this.to})
-      : super(key: key);
+      required this.to,
+      required Widget spriteWidget,
+      })
+      : super(key: key, spriteWidget: spriteWidget);
 
   @override
   _LinearSpriteState createState() => _LinearSpriteState();
 }
 
-class _LinearSpriteState extends State<LinearSprite> {
-  late Offset _translateOffset;
-
+class _LinearSpriteState extends BaseSpriteState<LinearSprite> {
+  @override
   get interpolation {
     final dx = widget.to.dx - widget.from.dx;
     final dy = widget.to.dy - widget.from.dy;
     return Offset(dx * widget.progress, dy * widget.progress);
-  }
-
-  @override
-  void didUpdateWidget(LinearSprite oldSpirit) {
-    super.didUpdateWidget(oldSpirit);
-
-    setState(() {
-      _translateOffset = interpolation;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _translateOffset = const Offset(0, 0);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Transform.translate(
-      child: const Image(
-        image: AssetImage('assets/sprit.png'),
-        height: 72,
-        width: 72,
-      ),
-      offset: _translateOffset,
-    );
   }
 }

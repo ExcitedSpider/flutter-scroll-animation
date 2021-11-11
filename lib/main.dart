@@ -38,6 +38,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 const titleHeight = 140.0;
+
 class _MyHomePageState extends State<MyHomePage> {
   double _scrollRatio = 0;
   GlobalKey articleKey = GlobalKey();
@@ -75,7 +76,16 @@ class _MyHomePageState extends State<MyHomePage> {
             child: LinearSprite(
               progress: _scrollRatio,
               from: const Offset(0, 0),
-              to: Offset(0, articleSize != null ? articleSize!.height - titleHeight - 36 : 0),
+              to: Offset(
+                  0,
+                  articleSize != null
+                      ? articleSize.height - titleHeight - 36
+                      : 0),
+              spriteWidget: const Image(
+                image: AssetImage('assets/sprit.png'),
+                height: 72,
+                width: 72,
+              ),
             ),
             top: titleHeight,
             right: 0)
