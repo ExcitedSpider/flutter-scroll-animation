@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'article_layout.dart';
 import './article_content.dart';
-import 'linear_sprit.dart';
+import 'linear_sprite.dart';
 
 void main() {
   runApp(const MyApp());
@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
         Positioned(
-            child: LinearSpirit(
+            child: LinearSprite(
               progress: _scrollRatio,
               from: const Offset(0, 0),
               to: Offset(0, articleSize != null ? articleSize!.height - titleHeight - 36 : 0),

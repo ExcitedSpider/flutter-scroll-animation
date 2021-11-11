@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// 实现线性运动
-class LinearSpirit extends StatefulWidget {
+class LinearSprite extends StatefulWidget {
   /// 动画进度
   final double progress;
   /// 动画开始点
@@ -9,7 +9,7 @@ class LinearSpirit extends StatefulWidget {
   /// 动画结束点
   final Offset to;
 
-  const LinearSpirit(
+  const LinearSprite(
       {Key? key,
       required this.progress,
       required this.from,
@@ -17,10 +17,10 @@ class LinearSpirit extends StatefulWidget {
       : super(key: key);
 
   @override
-  _LinearSpiritState createState() => _LinearSpiritState();
+  _LinearSpriteState createState() => _LinearSpriteState();
 }
 
-class _LinearSpiritState extends State<LinearSpirit> {
+class _LinearSpriteState extends State<LinearSprite> {
   late AnimationController _controller;
   late Offset _translateOffset;
 
@@ -31,7 +31,7 @@ class _LinearSpiritState extends State<LinearSpirit> {
   }
 
   @override
-  void didUpdateWidget(LinearSpirit oldSpirit) {
+  void didUpdateWidget(LinearSprite oldSpirit) {
     super.didUpdateWidget(oldSpirit);
 
     setState(() {
