@@ -27,22 +27,24 @@ class ArticleLayout extends StatelessWidget {
         children: [
           const MpHeading(),
           Expanded(
+              child: SingleChildScrollView(
             child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  margin: const EdgeInsets.only(bottom: 16),
                 ),
-                margin: const EdgeInsets.only(bottom: 16),
-              ),
-              MarkRow(author: author, mark: mark),
-              child,
-            ],
+                MarkRow(author: author, mark: mark),
+                child,
+              ],
+            ),
           )),
         ],
       ),
