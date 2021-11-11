@@ -21,7 +21,6 @@ class LinearSprite extends StatefulWidget {
 }
 
 class _LinearSpriteState extends State<LinearSprite> {
-  late AnimationController _controller;
   late Offset _translateOffset;
 
   get interpolation {
@@ -43,12 +42,6 @@ class _LinearSpriteState extends State<LinearSprite> {
   void initState() {
     super.initState();
     _translateOffset = const Offset(0, 0);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
   }
 
   @override
