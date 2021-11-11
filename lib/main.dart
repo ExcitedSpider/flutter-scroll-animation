@@ -37,31 +37,49 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+const titleHeight = 140.0;
 class _MyHomePageState extends State<MyHomePage> {
   double _scrollRatio = 0;
+  GlobalKey articleKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
+    final articleContext = articleKey.currentContext;
+
+    Size? articleSize;
+    if (articleContext != null) {
+      final box = articleContext.findRenderObject() as RenderBox;
+      articleSize = box.size;
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         toolbarHeight: 0,
       ),
-      body: Stack(children: [
+      body: Stack(key: articleKey, children: [
         ArticleLayout(
           title: widget.title,
           author: widget.author,
           mark: widget.mark,
           child: const ArticelContent(),
-          onScroll: (double ratio, { ScrollNotification? notification }) {
+          onScroll: (double ratio, {ScrollNotification? notification}) {
             setState(() {
               _scrollRatio = ratio;
             });
             return;
           },
         ),
-        Positioned(child: Spirit(progress: _scrollRatio), top: 140, left: -50)
+        Positioned(
+            child: Spirit(
+              progress: _scrollRatio,
+              containerSize: articleSize,
+              from: const Offset(0, 0),
+              to: Offset(0, articleSize!.height - titleHeight - 36),
+            ),
+            top: titleHeight,
+            right: 0)
       ]),
     );
   }
