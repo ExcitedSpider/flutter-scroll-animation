@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import "package:vector_math/vector_math.dart" as Math;
-import "package:bezier/bezier.dart";
-import 'article_layout.dart';
-import './article_content.dart';
-import 'sprite/linear_sprite.dart';
-import 'sprite/curve_sprite.dart';
+import './vertical_demo/article_content.dart';
+import './vertical_demo/article_layout.dart';
 
 void main() {
   runApp(const MyApp());
