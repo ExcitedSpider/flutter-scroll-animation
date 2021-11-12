@@ -57,20 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0,
         toolbarHeight: 0,
       ),
-      body: Stack(key: articleKey, children: [
-        ArticleLayout(
-          title: widget.title,
-          author: widget.author,
-          mark: widget.mark,
-          child: ArticelContent(scrollProgress: _scrollRatio, width: (articleSize?.width ?? 375)),
-          onScroll: (double ratio, {ScrollNotification? notification}) {
-            setState(() {
-              _scrollRatio = ratio;
-            });
-            return;
-          },
-        ),
-      ]),
+      body: VerticalDemoPage(title: widget.title, author: widget.author, mark: widget.mark),
     );
   }
 }
