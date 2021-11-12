@@ -26,6 +26,7 @@ class _LinearSpriteState extends BaseSpriteState<LinearSprite> {
   get interpolation {
     final dx = widget.to.dx - widget.from.dx;
     final dy = widget.to.dy - widget.from.dy;
+
     return Offset(dx * widget.progress, dy * widget.progress);
   }
 }

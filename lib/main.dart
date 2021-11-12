@@ -10,7 +10,7 @@ void main() {
   runApp(const MyApp());
 }
 
-var data = const {'title': '奥迪配你走过四季', 'author': '奥迪', 'mark': '一周之前'};
+var data = const {'title': '蝙蝠战车出动！', 'author': 'LEGO乐高', 'mark': '一周之前'};
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: widget.title,
           author: widget.author,
           mark: widget.mark,
-          child: const ArticelContent(),
+          child: ArticelContent(scrollProgress: _scrollRatio, width: (articleSize?.width ?? 375)),
           onScroll: (double ratio, {ScrollNotification? notification}) {
             setState(() {
               _scrollRatio = ratio;
@@ -75,39 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
             return;
           },
         ),
-        Positioned(
-            child: LinearSprite(
-              progress: _scrollRatio,
-              from: const Offset(0, 0),
-              to: Offset(
-                  0,
-                  articleSize != null
-                      ? articleSize.height - titleHeight - 36
-                      : 0),
-              spriteWidget: const Image(
-                image: AssetImage('assets/sprit.png'),
-                height: 72,
-                width: 72,
-              ),
-            ),
-            top: titleHeight,
-            right: 0),
-        Positioned(
-            child: CurveSprite(
-              progress: _scrollRatio,
-              curve: QuadraticBezier([
-                Math.Vector2(-29, 3),
-                Math.Vector2(-159, 218),
-                Math.Vector2(504, 1005)
-              ]),
-              spriteWidget: const Image(
-                image: AssetImage('assets/sprit.png'),
-                height: 72,
-                width: 72,
-              ),
-            ),
-            top: titleHeight,
-            left: -42),
       ]),
     );
   }

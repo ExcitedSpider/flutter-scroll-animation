@@ -112,7 +112,7 @@ class MarkRow extends StatelessWidget {
           ),
           Text(
             mark ?? '',
-            style: TextStyle(color: HexColor('#5A709A')),
+            style: TextStyle(color: HexColor('#AEACAF')),
           )
         ],
       ),
