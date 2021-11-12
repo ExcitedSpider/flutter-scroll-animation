@@ -96,9 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
             child: CurveSprite(
               progress: _scrollRatio,
               curve: QuadraticBezier([
-                Math.Vector2(-40.0, -40.0),
-                Math.Vector2(30.0, 10.0),
-                Math.Vector2(55.0, 25.0)
+                Math.Vector2(-29, 3),
+                Math.Vector2(-159, 218),
+                Math.Vector2(504, 1005)
               ]),
               spriteWidget: const Image(
                 image: AssetImage('assets/sprit.png'),
@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             top: titleHeight,
-            right: 0),
+            left: -42),
       ]),
     );
   }
