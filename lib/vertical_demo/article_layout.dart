@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import './color.dart';
+import '../color.dart';
 
 typedef ScrollListener = void Function(double ratio,
     {ScrollNotification? notification});
