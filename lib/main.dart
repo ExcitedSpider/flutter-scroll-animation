@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './pages/vertical_demo/main.dart';
+import './pages/hotizontal_demo/main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,12 @@ class MyApp extends StatelessWidget {
               title: data['title']!,
               author: data['author'] ?? '',
               mark: data['mark'] ?? '',
-            )
+            ),
+        '/horizontal': (context) => HorizontalDemoPage(
+              title: data['title']!,
+              author: data['author'] ?? '',
+              mark: data['mark'] ?? '',
+            ),
       },
     );
   }

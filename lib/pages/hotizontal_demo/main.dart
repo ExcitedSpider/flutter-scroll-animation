@@ -1,9 +1,8 @@
-import './article_content.dart';
 import 'package:path_demo/article_layout.dart';
 import 'package:flutter/material.dart';
 
-class VerticalDemoPage extends StatefulWidget {
-  const VerticalDemoPage(
+class HorizontalDemoPage extends StatefulWidget {
+  const HorizontalDemoPage(
       {Key? key, required this.title, this.author, this.mark})
       : super(key: key);
 
@@ -12,10 +11,10 @@ class VerticalDemoPage extends StatefulWidget {
   final String? mark;
 
   @override
-  State<VerticalDemoPage> createState() => _VerticalDemoPageState();
+  State<HorizontalDemoPage> createState() => _HorizontalDemoPageState();
 }
 
-class _VerticalDemoPageState extends State<VerticalDemoPage> {
+class _HorizontalDemoPageState extends State<HorizontalDemoPage> {
   double _scrollRatio = 0;
   GlobalKey articleKey = GlobalKey();
 
@@ -31,13 +30,17 @@ class _VerticalDemoPageState extends State<VerticalDemoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.close, color: Colors.black),
+        leading: IconButton(
+          icon: const Icon(Icons.close, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/horizontal');
-              },
-              icon: const Icon(Icons.more_horiz_outlined, color: Colors.black,))
+          Container(
+            child: const Icon(Icons.more_horiz_outlined, color: Colors.black),
+            margin: const EdgeInsets.only(right: 16),
+          ),
         ],
         backgroundColor: Colors.white,
         elevation: 0,
@@ -48,8 +51,7 @@ class _VerticalDemoPageState extends State<VerticalDemoPage> {
           title: widget.title,
           author: widget.author,
           mark: widget.mark,
-          child: ArticelContent(
-              scrollProgress: _scrollRatio, width: (articleSize?.width ?? 375)),
+          child: Text('你好'),
           onScroll: (double ratio, {ScrollNotification? notification}) {
             setState(() {
               _scrollRatio = ratio;
