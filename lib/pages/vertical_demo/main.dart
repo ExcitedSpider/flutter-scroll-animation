@@ -3,7 +3,8 @@ import 'package:path_demo/article_layout.dart';
 import 'package:flutter/material.dart';
 
 class VerticalDemoPage extends StatefulWidget {
-  const VerticalDemoPage({Key? key, required this.title, this.author, this.mark})
+  const VerticalDemoPage(
+      {Key? key, required this.title, this.author, this.mark})
       : super(key: key);
 
   final String title;
@@ -13,8 +14,6 @@ class VerticalDemoPage extends StatefulWidget {
   @override
   State<VerticalDemoPage> createState() => _VerticalDemoPageState();
 }
-
-const titleHeight = 140.0;
 
 class _VerticalDemoPageState extends State<VerticalDemoPage> {
   double _scrollRatio = 0;
@@ -32,16 +31,24 @@ class _VerticalDemoPageState extends State<VerticalDemoPage> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: const Icon(Icons.close, color: Colors.black),
+        actions:  [
+          Container(
+            child: const Icon(Icons.more_horiz_outlined, color: Colors.black),
+            margin: const EdgeInsets.only(right: 16),
+          ),
+        ],
         backgroundColor: Colors.white,
         elevation: 0,
-        toolbarHeight: 0,
+        toolbarHeight: 36,
       ),
       body: Stack(key: articleKey, children: [
         ArticleLayout(
           title: widget.title,
           author: widget.author,
           mark: widget.mark,
-          child: ArticelContent(scrollProgress: _scrollRatio, width: (articleSize?.width ?? 375)),
+          child: ArticelContent(
+              scrollProgress: _scrollRatio, width: (articleSize?.width ?? 375)),
           onScroll: (double ratio, {ScrollNotification? notification}) {
             setState(() {
               _scrollRatio = ratio;

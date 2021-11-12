@@ -37,7 +37,6 @@ class ArticleLayout extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const MpHeading(),
           Expanded(
               child: NotificationListener(
             onNotification: (notification) {
