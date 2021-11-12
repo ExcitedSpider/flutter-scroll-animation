@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import './vertical_demo/article_content.dart';
-import './vertical_demo/article_layout.dart';
+import './pages/vertical_demo/main.dart';
 
 void main() {
   runApp(const MyApp());
