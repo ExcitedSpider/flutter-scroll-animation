@@ -38,19 +38,10 @@ class MyHomePage extends StatefulWidget {
 const titleHeight = 140.0;
 
 class _MyHomePageState extends State<MyHomePage> {
-  double _scrollRatio = 0;
   GlobalKey articleKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-    final articleContext = articleKey.currentContext;
-
-    Size? articleSize;
-    if (articleContext != null) {
-      final box = articleContext.findRenderObject() as RenderBox;
-      articleSize = box.size;
-    }
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
