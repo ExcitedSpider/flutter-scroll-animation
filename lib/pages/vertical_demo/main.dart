@@ -31,7 +31,6 @@ class _VerticalDemoPageState extends State<VerticalDemoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.close, color: Colors.black),
         actions: [
           IconButton(
               onPressed: () {

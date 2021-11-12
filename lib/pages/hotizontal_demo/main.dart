@@ -36,12 +36,6 @@ class _HorizontalDemoPageState extends State<HorizontalDemoPage> {
             Navigator.pop(context);
           },
         ),
-        actions: [
-          Container(
-            child: const Icon(Icons.more_horiz_outlined, color: Colors.black),
-            margin: const EdgeInsets.only(right: 16),
-          ),
-        ],
         backgroundColor: Colors.white,
         elevation: 0,
         toolbarHeight: 36,
