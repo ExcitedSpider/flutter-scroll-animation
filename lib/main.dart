@@ -35,8 +35,6 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-const titleHeight = 140.0;
-
 class _MyHomePageState extends State<MyHomePage> {
   GlobalKey articleKey = GlobalKey();
 
