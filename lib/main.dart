@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './pages/vertical_demo/main.dart';
 import './pages/hotizontal_demo/main.dart';
+import './pages/landing/main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
               author: data['author'] ?? '',
               mark: data['mark'] ?? '',
             ),
+        '/landing': (context)=> const LandingPage()
       },
     );
   }

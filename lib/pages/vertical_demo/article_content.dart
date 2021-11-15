@@ -70,6 +70,12 @@ class ArticelContent extends StatelessWidget {
         ),
         const Image(
             image: AssetImage('assets/article_5.JPG'), fit: BoxFit.fill),
+        GestureDetector(
+          onTap: (){
+            Navigator.pushNamed(context, '/landing');
+          },
+          child: Image.asset('assets/article_6.JPG', fit: BoxFit.cover),
+        )
       ],
     );
   }
